@@ -1,10 +1,31 @@
 [[package]]
 category = "main"
+description = "A decorator for caching properties in classes."
+name = "cached-property"
+optional = false
+python-versions = "*"
+version = "1.5.1"
+
+[[package]]
+category = "main"
 description = "Composable command line interface toolkit"
 name = "click"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "7.0"
+
+[[package]]
+category = "main"
+description = "Rolling backport of unittest.mock for all Pythons"
+name = "mock"
+optional = false
+python-versions = ">=3.6"
+version = "4.0.1"
+
+[package.extras]
+build = ["twine", "wheel", "blurb"]
+docs = ["sphinx"]
+test = ["pytest", "pytest-cov"]
 
 [[package]]
 category = "main"
@@ -16,29 +37,39 @@ version = "3.13.1"
 
 [[package]]
 category = "main"
-description = "Migration engine for peewee orm"
-name = "peewee-migrations"
+description = "Fork of peewee-migrate with active support"
+name = "peewee-migrate2"
 optional = false
 python-versions = "*"
-version = "0.3.18"
+version = "1.3.0"
 
 [package.dependencies]
-click = ">=7.0"
-peewee = ">=3.6.4"
+cached-property = ">=1.4.2"
+click = ">=6.7"
+mock = ">=2.0.0"
+peewee = ">=3.3.3"
 
 [metadata]
-content-hash = "f3c34b74bbe3938955b67c4f8ec735061832bdd98d8f3b836761401732d9a424"
+content-hash = "801e5e65834abbe58d04031e145088a89c37d5892da58641763f46a6d1282c48"
 python-versions = "^3.7"
 
 [metadata.files]
+cached-property = [
+    {file = "cached-property-1.5.1.tar.gz", hash = "sha256:9217a59f14a5682da7c4b8829deadbfc194ac22e9908ccf7c8820234e80a1504"},
+    {file = "cached_property-1.5.1-py2.py3-none-any.whl", hash = "sha256:3a026f1a54135677e7da5ce819b0c690f156f37976f3e30c5430740725203d7f"},
+]
 click = [
     {file = "Click-7.0-py2.py3-none-any.whl", hash = "sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13"},
     {file = "Click-7.0.tar.gz", hash = "sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"},
 ]
+mock = [
+    {file = "mock-4.0.1-py3-none-any.whl", hash = "sha256:5e48d216809f6f393987ed56920305d8f3c647e6ed35407c1ff2ecb88a9e1151"},
+    {file = "mock-4.0.1.tar.gz", hash = "sha256:2a572b715f09dd2f0a583d8aeb5bb67d7ed7a8fd31d193cf1227a99c16a67bc3"},
+]
 peewee = [
     {file = "peewee-3.13.1.tar.gz", hash = "sha256:9492af4d1f8e18a7fa0e930960315b38931286ea0f1659bbd5503456cffdacde"},
 ]
-peewee-migrations = [
-    {file = "peewee-migrations-0.3.18.tar.gz", hash = "sha256:733b53e36da5d32aa340ca050ec2e98c4da19cc5d8737c826c0391ac625b1c5e"},
-    {file = "peewee_migrations-0.3.18-py3-none-any.whl", hash = "sha256:7daa84b2b3d08abdf1287e04f5f4f8cd64a21842728c11065df38fd445c6777c"},
+peewee-migrate2 = [
+    {file = "peewee_migrate2-1.3.0-py2.py3-none-any.whl", hash = "sha256:b628c73b0696c7954061caa0ace6149d4352a3b3a960947277e172a3e8deed2d"},
+    {file = "peewee_migrate2-1.3.0.tar.gz", hash = "sha256:c580082952df4ad558dd6755d88c00b0e973d960fe0197ae59d89264c3ac5bad"},
 ]
