@@ -3,54 +3,42 @@ from peewee import *
 db = SqliteDatabase('tourism.db')
 
 
-class Tour(Model):
+class BaseModel(Model):
+    class Meta:
+        database = db
+
+
+class Tour(BaseModel):
     name = CharField()
     date = DateField()
     duration = IntegerField()
 
-    class Meta:
-        database = db
 
-
-class Tourist(Model):
+class Tourist(BaseModel):
     name = CharField()
     age = SmallIntegerField()
     tour = ForeignKeyField(Tour, backref='tourists')
 
-    class Meta:
-        database = db
 
-
-class Transport(Model):
-    kind = CharField()
+class Vehicle(BaseModel):
+    type = CharField()
     capacity = IntegerField()
-
-    class Meta:
-        database = db
+    resort = DeferredForeignKey('Resort', backref='vehicles')
 
 
-class Resort(Model):
+class Resort(BaseModel):
     name = CharField()
     coordinate = CharField()
     tour = ForeignKeyField(Tour, backref='resorts')
-    transport = ManyToManyField(Transport)
-
-    class Meta:
-        database = db
+    vehicles = ForeignKeyField(Vehicle, backref='resorts')
 
 
-class Showplace(Model):
+class Sight(BaseModel):
     name = CharField()
-    resort = ForeignKeyField(Resort, backref='showplaces')
-
-    class Meta:
-        database = db
+    resort = ForeignKeyField(Resort, backref='sights')
 
 
-class Residence(Model):
-    kind = CharField()
+class Residence(BaseModel):
+    type = CharField()
     price = IntegerField()
-    resort = ForeignKeyField(Resort, backref='showplaces')
-
-    class Meta:
-        database = db
+    resort = ForeignKeyField(Resort, backref='residences')
