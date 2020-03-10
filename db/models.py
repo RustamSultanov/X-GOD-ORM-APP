@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from peewee import *
 
 db = SqliteDatabase('tourism.db')
@@ -23,14 +24,18 @@ class Tourist(BaseModel):
 class Vehicle(BaseModel):
     type = CharField()
     capacity = IntegerField()
-    resort = DeferredForeignKey('Resort', backref='vehicles')
 
 
 class Resort(BaseModel):
     name = CharField()
     coordinate = CharField()
     tour = ForeignKeyField(Tour, backref='resorts')
-    vehicles = ForeignKeyField(Vehicle, backref='resorts')
+
+
+# correct many-to-many implementation in PeeWee
+class ResortVehicle(BaseModel):
+    resort = ForeignKeyField(Resort)
+    vehicle = ForeignKeyField(Vehicle)
 
 
 class Sight(BaseModel):
