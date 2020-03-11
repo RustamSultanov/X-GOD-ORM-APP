@@ -1,14 +1,24 @@
 # -*- coding: utf-8 -*-
 import datetime
 
-from db.models import db, Tour, Tourist, Vehicle, Resort, Sight, Residence, ResortVehicle
+from peewee import SqliteDatabase
+from peewee_migrate import Router
+
+from db.models import Tour, Tourist, Vehicle, Resort, Sight, Residence, ResortVehicle
+
+router = Router(SqliteDatabase('tourism.db'))
+
+# Create migration
+router.create('init', "models")
+#
+# # Run migration/migrations
+# router.run('init')
+#
+# # Run all unapplied migrations
+router.run()
 
 
 def fill():
-
-    with db:
-        db.create_tables([Tour, Tourist, Vehicle, Resort, Sight, Residence, ResortVehicle])
-
     vehicle1 = Vehicle.create(
         type='Sedan',
         capacity=4,

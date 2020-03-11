@@ -55,17 +55,16 @@ def query3(age, duration):
             distinct())
 
 
-# fill()
-
+fill()
 
 query = query1('Вилла')
 for resort in query:
     print(resort.name)
 
-# query = query2(datetime.date(2020, 5, 19))
-# for vehicle in query:
-#     print(vehicle.type, vehicle.capacity)
+query = query2(datetime.date(2020, 5, 19))
+for vehicle in query:
+    print(vehicle.type, vehicle.capacity)
 
-# query = query3(21, 15)
-# for result in query.namedtuples():
-#     print(result.name, result.coordinate)
+query = query3(21, 15)
+for result in query.namedtuples():
+    print(result.name, result.coordinate)
