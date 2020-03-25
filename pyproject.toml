@@ -8,6 +8,7 @@ authors = ["Rustam <rustamelutingol@gmail.com>"]
 python = "^3.7"
 peewee = "^3.13.1"
 peewee_migrate2 = "^1.3.0"
+pyqt5 = "^5.14.1"
 
 [tool.poetry.dev-dependencies]
 
