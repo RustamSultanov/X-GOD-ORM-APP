@@ -6,17 +6,6 @@ from peewee_migrate import Router
 
 from db.models import Tour, Tourist, Vehicle, Resort, Sight, Residence, ResortVehicle
 
-router = Router(SqliteDatabase('tourism.db'))
-
-# Create migration
-router.create('init', "models")
-#
-# # Run migration/migrations
-# router.run('init')
-#
-# # Run all unapplied migrations
-router.run()
-
 
 def fill():
     vehicle1 = Vehicle.create(
@@ -219,3 +208,16 @@ def fill():
                 resort=resort,
                 vehicle=vehicle,
             )
+
+
+if __name__ == '__main__':
+    router = Router(SqliteDatabase('tourism.db'))
+
+    # Create migration
+    router.create('init', "models")
+    #
+    # # Run migration/migrations
+    # router.run('init')
+    #
+    # # Run all unapplied migrations
+    router.run()
