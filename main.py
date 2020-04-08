@@ -86,13 +86,13 @@ class MainWindow(QMainWindow):
         self.age_label.setText(label_text)
 
     def getSightName(self):
-        text, ok = QInputDialog.getText(self, 'Евровидение отменили', 'Введите название вашей достопримечательности:')
+        text, ok = QInputDialog.getText(self, 'Достопримечательность', 'Введите название вашей достопримечательности:')
 
         if ok:
             self.setSightLabel(text)
 
     def getAge(self):
-        text, ok = QInputDialog.getInt(self, 'Сыр с плесенью', 'Введите возраст:')
+        text, ok = QInputDialog.getInt(self, 'Возраст', 'Введите возраст:', min=0, max=100)
 
         if ok:
             self.setAgeLabel(text)
